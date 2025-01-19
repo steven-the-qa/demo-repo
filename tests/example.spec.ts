@@ -10,7 +10,6 @@ test('has title', async ({ page }) => {
 
 test('product appears in search results', async ({ page }) => {
   await page.goto('https://a.co/d/i755aa7');
-  await page.pause();
   const asinContainer = page.getByTestId('detailBullets_feature_div').getByText("ASIN").locator("xpath=following-sibling::*");
   const asin = await asinContainer.textContent() as string;
   await searchForProduct(page, asin);
