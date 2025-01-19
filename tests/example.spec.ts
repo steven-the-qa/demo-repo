@@ -1,21 +1,21 @@
 import { test, expect } from '@playwright/test';
-// import { searchForProduct } from './utils';
+import { searchForProduct } from './utils';
 
-// const productName = 'Red Rock Deli Lime And Pepper Potato Chips 165gm';
-// test('has title', async ({ page }) => {
-//   await page.goto('https://a.co/d/i755aa7');
-//   await expect(page.getByTestId('productTitle')).toBeVisible();
-//   await expect(page.getByTestId('productTitle')).toHaveText(productName);
-// });
+const productName = 'Red Rock Deli Lime And Pepper Potato Chips 165gm';
+test('has title', async ({ page }) => {
+  await page.goto('https://a.co/d/i755aa7');
+  await expect(page.getByTestId('productTitle')).toBeVisible();
+  await expect(page.getByTestId('productTitle')).toHaveText(productName);
+});
 
-// test('product appears in search results', async ({ page }) => {
-//   await page.goto('https://a.co/d/i755aa7');
-//   await page.pause();
-//   const asinContainer = page.getByTestId('detailBullets_feature_div').getByText("ASIN").locator("xpath=following-sibling::*");
-//   const asin = await asinContainer.textContent() as string;
-//   await searchForProduct(page, asin);
-//   await expect(page.getByText(productName, { exact: true })).toBeVisible();
-// });
+test('product appears in search results', async ({ page }) => {
+  await page.goto('https://a.co/d/i755aa7');
+  await page.pause();
+  const asinContainer = page.getByTestId('detailBullets_feature_div').getByText("ASIN").locator("xpath=following-sibling::*");
+  const asin = await asinContainer.textContent() as string;
+  await searchForProduct(page, asin);
+  await expect(page.getByText(productName, { exact: true })).toBeVisible();
+});
 
 test('can add product to cart', async ({ page }) => {
   await page.goto('https://a.co/d/i755aa7');
